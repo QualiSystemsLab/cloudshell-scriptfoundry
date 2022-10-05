@@ -17,6 +17,23 @@ pip install cloudshell-scriptfoundry
 
 ### Basic Usage
 
+Configure "Shellfoundry" Credentials (shared by "Scriptfoundry")
+
+```commandline
+shellfoundry config host localhost
+shellfoundry config username admin
+shellfoundry config password admin
+```
+
+To check configured values:
+
+```commandline
+shellfoundry config
+```
+
+See [Shellfoundry Reference](https://help.quali.com/Online%20Help/0.0/Portal/Content/DevGuide/Reference/Shellfoundry.htm?tocpath=The%20CloudShell%20DevGuide%7CReference%7C_____2)
+for more info.
+
 Generate new project:
 
 ```commandline
@@ -30,7 +47,7 @@ cd setup_config_firewall
 scriptfoundry update setup_config_firewall
 ```
 
-### Top Level Commands
+### Commands Overview
 
 ```commandline
 Usage: scriptfoundry [OPTIONS] COMMAND [ARGS]...
@@ -45,10 +62,10 @@ Commands:
   version  Display scriptfoundry version
 ```
 
-### New Command Details
+### Template Generation
 
-Generate new script from available templates. The templates map to the orchestration script "types" in cloudshell (
-setup, teardown, etc). Script can optionally be generated to a different directory.
+"New" command generates script template. 
+The templates map to the orchestration script "types" in cloudshell (setup, teardown, default, save, restore, resource).
 
 ```commandline
 Usage: scriptfoundry new [OPTIONS] NAME
