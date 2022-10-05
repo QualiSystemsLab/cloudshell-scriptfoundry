@@ -1,10 +1,8 @@
-import sys
+import os
 import zipfile
 from dataclasses import dataclass
-from typing import List
 from pathlib import Path
-
-import os
+from typing import List
 
 DIRS_TO_EXCLUDE = [".git", "dist", "venv", ".idea"]
 FILES_TO_EXCLUDE = ["credentials.py", "debug.py"]
@@ -21,11 +19,10 @@ class ZipDetails:
 
 class InvalidScriptDirectory(Exception):
     """ checking for __main__.py in dir """
-    pass
 
 
 def _validate_script_dir(src_path: str):
-    """ validate top level folder that it has a __main__.py entry point """
+    """ Validate top level folder that it has a __main__.py entry point """
     files = os.listdir(src_path)
     dir_name = os.path.basename(src_path)
     if "__main__.py" not in files:
@@ -34,11 +31,13 @@ def _validate_script_dir(src_path: str):
 
 
 def _is_valid_file(file_name: str, file_path: str, files_to_exclude: List[str]):
-    invalid_conditions = [file_name.endswith(".pyc"),
-                          file_name.endswith(".zip"),
-                          file_name in files_to_exclude,
-                          file_name == os.path.basename(__file__),  # exclude the updater script
-                          not os.path.isfile(file_path)]
+    invalid_conditions = [
+        file_name.endswith(".pyc"),
+        file_name.endswith(".zip"),
+        file_name in files_to_exclude,
+        file_name == os.path.basename(__file__),  # exclude the updater script
+        not os.path.isfile(file_path),
+    ]
     if any(invalid_conditions):
         return False
     return True
@@ -49,8 +48,8 @@ def _create_dist_folder(script_dir_path: str):
 
 
 def _create_zip_archive(archive_output_path: str, script_dir_src_path: str):
-    with zipfile.ZipFile(archive_output_path, 'w', zipfile.ZIP_DEFLATED) as archive_file:
-        for dirpath, dirnames, filenames in os.walk(script_dir_src_path):
+    with zipfile.ZipFile(archive_output_path, "w", zipfile.ZIP_DEFLATED) as archive_file:
+        for dirpath, _, filenames in os.walk(script_dir_src_path):
             dir_name = os.path.basename(dirpath)
 
             # skip dist and other excluded folders
@@ -66,21 +65,23 @@ def _create_zip_archive(archive_output_path: str, script_dir_src_path: str):
                 archive_file.write(file_path, archive_file_path)
 
     # validate generated zip archive
-    with zipfile.ZipFile(archive_output_path, 'r') as archive_file:
+    with zipfile.ZipFile(archive_output_path, "r") as archive_file:
         bad_file = zipfile.ZipFile.testzip(archive_file)
 
         if bad_file:
-            raise zipfile.BadZipFile('CRC check failed for {} with file {}'.format(archive_output_path, bad_file))
+            raise zipfile.BadZipFile(f"CRC check failed for {archive_output_path} with file {bad_file}")
 
 
 def get_zip_details(script_name: str, script_dir_path: str):
-    zip_file_name = script_name + '.zip'
+    zip_file_name = script_name + ".zip"
     archive_path = os.path.join(script_dir_path, "dist", zip_file_name)
-    return ZipDetails(script_dir_path=script_dir_path,
-                      script_dir_name=os.path.basename(script_dir_path),
-                      script_name=script_name,
-                      zip_file_name=f"{script_name}.zip",
-                      archive_path=archive_path)
+    return ZipDetails(
+        script_dir_path=script_dir_path,
+        script_dir_name=os.path.basename(script_dir_path),
+        script_name=script_name,
+        zip_file_name=f"{script_name}.zip",
+        archive_path=archive_path,
+    )
 
 
 def create_dist_archive(script_name: str = None, script_dir_path: str = None) -> ZipDetails:

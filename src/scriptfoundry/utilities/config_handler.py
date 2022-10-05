@@ -1,5 +1,6 @@
 from dataclasses import dataclass
-from shellfoundry.utilities.config_reader import get_with_default, Configuration, InstallConfig, CloudShellConfigReader
+
+from shellfoundry.utilities.config_reader import CloudShellConfigReader, Configuration, InstallConfig, get_with_default
 
 # config keys
 SCRIPT_TEMPLATE_LOCATION = "script_template_location"

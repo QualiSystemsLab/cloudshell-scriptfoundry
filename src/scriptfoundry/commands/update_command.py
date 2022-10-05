@@ -1,8 +1,9 @@
-from scriptfoundry.utilities.api_generator import AutomationApiGenerator
-from scriptfoundry.commands.pack_command import pack_script
-from scriptfoundry.utilities.zip_archive_handler import get_zip_details
 import click
 from shellfoundry.exceptions import FatalError
+
+from scriptfoundry.commands.pack_command import pack_script
+from scriptfoundry.utilities.api_generator import AutomationApiGenerator
+from scriptfoundry.utilities.zip_archive_handler import get_zip_details
 
 
 class ScriptUpdateExecutor:

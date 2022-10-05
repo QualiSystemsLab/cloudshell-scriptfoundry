@@ -1,9 +1,9 @@
 import click
 import pkg_resources
 
+from scriptfoundry.commands.new_command import NewScriptExecutor
 from scriptfoundry.commands.pack_command import pack_script
 from scriptfoundry.commands.update_command import ScriptUpdateExecutor
-from scriptfoundry.commands.new_command import NewScriptExecutor
 from scriptfoundry.utilities.template_handler import ScriptTypes
 
 
@@ -15,9 +15,7 @@ def cli():
 @cli.command()
 def version():
     """Display scriptfoundry version"""
-    click.echo(
-        "scriptfoundry version " + pkg_resources.get_distribution("cloudshell-scriptfoundry").version
-    )
+    click.echo("scriptfoundry version " + pkg_resources.get_distribution("cloudshell-scriptfoundry").version)
 
 
 @cli.command()
@@ -59,7 +57,7 @@ def update(name, path):
     required=True,
     type=click.Choice(ScriptTypes.script_type_values()),
     default=ScriptTypes.BLUEPRINT_TYPE.value,
-    help=f"Specify cloudshell script template 'type'. Defaults to 'blueprint'.",
+    help="Specify script template 'type'. Defaults to 'blueprint'.",
 )
 @click.option(
     "--output",
@@ -69,6 +67,4 @@ def update(name, path):
 )
 def new(name, template, output):
     """Create new script from template"""
-    NewScriptExecutor().create_script(script_name=name,
-                                      script_type=template,
-                                      output_dir=output)
+    NewScriptExecutor().create_script(script_name=name, script_type=template, output_dir=output)

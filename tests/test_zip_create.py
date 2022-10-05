@@ -1,7 +1,8 @@
+import os
+
 import pytest
 
 from scriptfoundry.utilities import zip_archive_handler
-import os
 
 
 def _test_create(script_dir_name: str) -> zip_archive_handler.ZipDetails:
