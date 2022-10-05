@@ -18,11 +18,11 @@ class ZipDetails:
 
 
 class InvalidScriptDirectory(Exception):
-    """ checking for __main__.py in dir """
+    """checking for __main__.py in dir"""
 
 
 def _validate_script_dir(src_path: str):
-    """ Validate top level folder that it has a __main__.py entry point """
+    """Validate top level folder that it has a __main__.py entry point"""
     files = os.listdir(src_path)
     dir_name = os.path.basename(src_path)
     if "__main__.py" not in files:

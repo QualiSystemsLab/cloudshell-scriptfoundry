@@ -5,7 +5,7 @@ from scriptfoundry.utilities import config_handler
 
 
 class AutomationApiGenerator:
-    """ Read Shellfoundry config and create automation api client instance with credentials """
+    """Read Shellfoundry config and create automation api client instance with credentials"""
 
     def __init__(self):
         self._shellfoundry_config = config_handler.get_shellfoundry_config()
