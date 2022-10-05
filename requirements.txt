@@ -1,0 +1,2 @@
+shellfoundry
+cloudshell-automation-api
