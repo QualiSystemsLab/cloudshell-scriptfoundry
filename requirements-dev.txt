@@ -1,6 +1,7 @@
-# https://stackoverflow.com/a/73932581
-importlib-metadata<5.0
 pytest
 pylint
 flake8
 pre-commit
+
+# https://stackoverflow.com/a/73932581
+importlib-metadata>=1.1.0,<4.3
