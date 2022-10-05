@@ -1,18 +1,20 @@
+default_language_version:
+  python: python3.9
+exclude: ^test-assets/
 repos:
   # ISORT
   - repo: https://github.com/timothycrosley/isort
     rev: 5.4.2
     hooks:
       - id: isort
-        language_version: python3.9
         args: [ --line-length=127 ]
 
   # BLACK
   - repo: https://github.com/python/black
+    exclude: ^/
     rev: 22.3.0
     hooks:
       - id: black
-        language_version: python3.9
         args: [ --line-length=127 ]
 
   # FLAKE8
@@ -27,7 +29,6 @@ repos:
             flake8-print,
             flake8-eradicate,
         ]
-        language_version: python3.9
         args: [
             --max-line-length=127,
             '--ignore=
