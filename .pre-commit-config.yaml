@@ -11,7 +11,6 @@ repos:
 
   # BLACK
   - repo: https://github.com/python/black
-    exclude: ^/
     rev: 22.3.0
     hooks:
       - id: black
