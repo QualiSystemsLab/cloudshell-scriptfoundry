@@ -4,7 +4,7 @@ repos:
     rev: 5.4.2
     hooks:
       - id: isort
-        language_version: python3.7
+        language_version: python3.9
         args: [ --line-length=127 ]
 
   # BLACK
@@ -12,7 +12,7 @@ repos:
     rev: 22.3.0
     hooks:
       - id: black
-        language_version: python3.7
+        language_version: python3.9
         args: [ --line-length=127 ]
 
   # FLAKE8
@@ -27,7 +27,7 @@ repos:
             flake8-print,
             flake8-eradicate,
         ]
-        language_version: python3.7
+        language_version: python3.9
         args: [
             --max-line-length=127,
             '--ignore=
