@@ -32,7 +32,8 @@ repos:
             --max-line-length=127,
             '--ignore=
             D100,
-            D101,D102,
+            D101,
+            D102,
             D103,
             D104,
             D105,
@@ -47,7 +48,8 @@ repos:
             E203,
             F403,
             F405,
-            T001'
+            T001,
+            T201'
         ]
 
   # PYLINT
