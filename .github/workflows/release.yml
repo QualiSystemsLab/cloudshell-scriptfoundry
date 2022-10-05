@@ -38,10 +38,10 @@ jobs:
           echo "Error: Tag and version are not equal, cannot create a release"
           exit 1
         fi
-    - name: Set up Python 3.7
+    - name: Set up Python 3.9
       uses: actions/setup-python@v2
       with:
-        python-version: 3.7
+        python-version: 3.9
 
     - name: Install pypa/build
       run: >-
