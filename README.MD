@@ -89,8 +89,8 @@ Options:
 
 Online mode will pull cookiecutter templates
 from [github repo](https://github.com/QualiSystemsLab/cloudshell-script-templates)
-For Offline mode:
 
+To Setup up Offline mode:
 1. download templates
    from [github release page](https://github.com/QualiSystemsLab/cloudshell-script-templates/releases)
 2. Unzip templates and copy to designated location on client dev machine
