@@ -104,7 +104,19 @@ shellfoundry config online_mode False
 shellfoundry config script_template_location "C:\cloudshell_dev_files\cloudshell-script-templates-0.1.0"
 ```
 
-## Dependencies
+### Dev Helper
+It can be useful to use the api generator helper to get api session without having to add credentials to debug file.
+With this helper, no need to erase credentials and no accidentally commiting secrets to source control.
+
+```python
+from scriptfoundry.utilities.api_generator import AutomationApiGenerator
+
+SANDBOX_ID = "<DEBUG_SANDBOX_ID>"
+api = AutomationApiGenerator().create_client()
+sb_details = api.GetReservationDetails(SANDBOX_ID, disableCache=True).ReservationDescription
+```
+
+### Dependencies
 
 Scriptfoundry is built on top of shellfoundry, and its underlying open-source dependencies
 

@@ -12,6 +12,7 @@ from scriptfoundry.utilities.api_generator import AutomationApiGenerator
 
 @contextlib.contextmanager
 def pushd_context(new_dir):
+    """https://stackoverflow.com/a/13847807"""
     previous_dir = os.getcwd()
     os.chdir(new_dir)
     try:
