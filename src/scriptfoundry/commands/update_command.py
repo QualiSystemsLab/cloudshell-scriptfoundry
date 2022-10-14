@@ -1,3 +1,5 @@
+import os
+
 import click
 from cloudshell.api.cloudshell_api import CloudShellAPIError
 from shellfoundry.exceptions import FatalError
@@ -17,7 +19,10 @@ class ScriptUpdateExecutor:
             pbar.render_progress()
 
             try:
-                self._api.UpdateScript(zip_details.script_name, zip_details.archive_path)
+                # need to change dir before uploading, otherwise full path gets stored in cloudshell and causes issues
+                dist_dir = os.path.join(zip_details.script_dir_path, "dist")
+                os.chdir(dist_dir)
+                self._api.UpdateScript(zip_details.script_name, zip_details.zip_file_name)
             except CloudShellAPIError as e:
                 if e.code == "100":
                     raise FatalError(f"'{zip_details.script_name}' not on Cloudshell. Upload manually the first time.")
