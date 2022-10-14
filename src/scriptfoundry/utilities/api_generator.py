@@ -12,8 +12,7 @@ class AutomationApiGenerator:
 
     def create_client(self) -> CloudShellAPISession:
         """
-        TODO: add config setting for automation api port and pass here
-        Custom automation api port other than 8029 not supported yet
+        Custom automation api port other than 8029 not supported - pass from config key to here if support requested
         """
         client = None
         try:
