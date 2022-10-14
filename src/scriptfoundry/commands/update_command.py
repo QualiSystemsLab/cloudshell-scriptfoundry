@@ -5,6 +5,7 @@ from cloudshell.api.cloudshell_api import CloudShellAPIError
 from shellfoundry.exceptions import FatalError
 
 from scriptfoundry.commands.pack_command import pack_script
+from scriptfoundry.utilities import check_connectivity
 from scriptfoundry.utilities.api_generator import AutomationApiGenerator
 
 
@@ -13,6 +14,7 @@ class ScriptUpdateExecutor:
         self._api = AutomationApiGenerator().create_client()
 
     def update_script(self, script_name: str = None, script_dir_path: str = None):
+        check_connectivity.validate_cloudshell_connectivity()
         with click.progressbar(length=2, show_eta=False, label="uploading script") as pbar:
             zip_details = pack_script(script_name, script_dir_path)
             pbar.make_step(1)

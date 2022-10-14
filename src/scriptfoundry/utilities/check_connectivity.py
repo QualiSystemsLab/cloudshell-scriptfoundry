@@ -1,6 +1,16 @@
 import socket
 
+from shellfoundry.exceptions import FatalError
+
 from scriptfoundry.utilities import config_handler
+
+
+class CloudshellConnectityError(Exception):
+    pass
+
+
+class GithubConnectityError(Exception):
+    pass
 
 
 def is_connected(host: str, port: int) -> bool:
@@ -12,10 +22,13 @@ def is_connected(host: str, port: int) -> bool:
     return True
 
 
-def is_github_connected() -> bool:
-    return is_connected(host="github.com", port=443)
+def validate_github_connectivity() -> bool:
+    if not is_connected(host="github.com", port=443):
+        raise FatalError("Failed to connect to Github to pull templates")
 
 
-def is_cloudshell_connected() -> bool:
+def validate_cloudshell_connectivity():
     shellfoundry_config = config_handler.get_shellfoundry_config()
-    return is_connected(host=shellfoundry_config.host, port=shellfoundry_config.port)
+    if not is_connected(host=shellfoundry_config.host, port=shellfoundry_config.port):
+        err_msg = f"Cloudshell connectivity Failed. Host: {shellfoundry_config.host}, Port {shellfoundry_config.port}"
+        raise FatalError(err_msg)

@@ -3,7 +3,7 @@ from cookiecutter.exceptions import OutputDirExistsException
 from shellfoundry.exceptions import FatalError
 
 from scriptfoundry import constants
-from scriptfoundry.utilities import config_handler, template_handler
+from scriptfoundry.utilities import check_connectivity, config_handler, template_handler
 
 
 class NewScriptExecutor:
@@ -26,6 +26,7 @@ class NewScriptExecutor:
 
     def _create_script(self, script_name: str, script_type: str, output_dir: str = "."):
         if self.online_mode:
+            check_connectivity.validate_github_connectivity()
             template_handler.create_from_github(
                 github_repo=constants.GITHUB_TEMPLATES_REPO,
                 script_name=script_name,
