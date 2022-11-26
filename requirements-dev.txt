@@ -1,4 +1,6 @@
-black
+# shellfoundry has old click version, conflicts with black click version
+# https://github.com/psf/black/issues/3111#issuecomment-1157617786
+black==21.12b0
 pytest
 pylint
 flake8
