@@ -1,6 +1,7 @@
 [![Python 3.9](https://img.shields.io/badge/python-3.9-blue.svg)](https://www.python.org/downloads/release/python/)
 [![Lint and Test](https://github.com/QualiSystemsLab/cloudshell-scriptfoundry/actions/workflows/lint-test.yml/badge.svg)](https://github.com/QualiSystemsLab/cloudshell-scriptfoundry/actions/workflows/lint-test.yml)
 [![PyPI version](https://badge.fury.io/py/cloudshell-scriptfoundry.svg)](https://badge.fury.io/py/cloudshell-scriptfoundry)
+[![Downloads](https://pepy.tech/badge/cloudshell-scriptfoundry)](https://pepy.tech/project/cloudshell-scriptfoundry)
 
 # Cloudshell Scriptfoundry
 

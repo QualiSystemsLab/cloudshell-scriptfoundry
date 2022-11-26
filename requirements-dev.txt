@@ -1,8 +1,11 @@
+# shellfoundry has old click version, conflicts with black click version
+# https://github.com/psf/black/issues/3111#issuecomment-1157617786
+black==21.12b0
 pytest
 pylint
 flake8
-pre-commit
+tox
 
 # https://stackoverflow.com/a/73932581
 # https://django.fun/en/qa/430056/
-importlib-metadata==4.13.0
+# importlib-metadata==4.13.0
