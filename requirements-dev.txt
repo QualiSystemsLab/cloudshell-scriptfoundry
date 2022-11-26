@@ -1,8 +1,9 @@
+black
 pytest
 pylint
 flake8
-pre-commit
+tox
 
 # https://stackoverflow.com/a/73932581
 # https://django.fun/en/qa/430056/
-importlib-metadata==4.13.0
+# importlib-metadata==4.13.0
